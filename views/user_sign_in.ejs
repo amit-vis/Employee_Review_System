@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Sign In</h1>
 
-    <form action="" method="post">
+    <form action="/user/create-session" method="post">
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" name="user-email" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
@@ -9,9 +9,12 @@
             <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" name="user-name" placeholder="Password">
                 <label for="floatingPassword">Password</label>
-            </div><br/>
-            <div>
-                <button type="submit" class="btn btn-primary">Primary</button>
             </div>
+            <a href="/user/sign-up">Sign Up</a><br/>
+            <br/>
+            <div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+            
     </form>
 </div>
