@@ -1,0 +1,36 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(emp of employee){%>
+            <tr id="emp-view-<%=emp.id%>">
+                <td><%=emp.name%></td>
+                <td><%=emp.email%></td>
+                <td>
+                    <%if (emp.isAdmin==true){%>
+                        <a type="submit" href="/admin/removeadmin/<%=emp.id%>" class="btn btn-danger">Admin</a>
+                    <%}else{%>
+                        <a type="submit" href="/admin/makeadmin/<%=emp.id%>" class="btn btn-danger">Employee</a>
+                    <%}%>
+                </td>
+                <td>
+                    <%-include('update')%>
+                </td>
+                <td>
+                    <a type="submit" href="/admin/delete/<%=emp.id%>" class="btn btn-danger">Remove</a>
+                </td>
+            </tr>
+            <%}%>
+        </tbody>
+
+    </table>
+
+</div>
