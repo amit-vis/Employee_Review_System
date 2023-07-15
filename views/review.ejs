@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Assisgn Review to Employee</h1>
+    <hr/>
+    <form action="/review/createReview" method="post">
+        <label for="recipient">Recipient: </label>
+        <select class="form-select" name="recipient" id="recipient" aria-label="Default select example">
+            <% for (let emp of user) {%>
+            <option value="<%=emp.id%>"><%=emp.name%></option>
+            <%}%>
+          </select>
+          <label for="reviewer">Reviewer: </label>
+        <select class="form-select" name="reviewer" id="recipient" aria-label="Default select example">
+            <% for (let emp of user) {%>
+            <option value="<%=emp.id%>"><%=emp.name%></option>
+            <%}%>
+          </select>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

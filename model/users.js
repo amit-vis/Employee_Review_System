@@ -17,7 +17,19 @@ const userSchema = new mongoose.Schema({
     isAdmin:{
         type: Boolean,
         default: true
-    }
+    },
+    assignReview:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'AssignReview'
+        }
+    ],
+    myReview:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'MyReview'
+        }
+    ]
 },{
     timestamps: true
 });
