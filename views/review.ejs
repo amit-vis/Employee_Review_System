@@ -4,13 +4,13 @@
     <form action="/review/createReview" method="post">
         <label for="recipient">Recipient: </label>
         <select class="form-select" name="recipient" id="recipient" aria-label="Default select example">
-            <% for (let emp of user) {%>
+            <% for (let emp of users) {%>
             <option value="<%=emp.id%>"><%=emp.name%></option>
             <%}%>
           </select>
           <label for="reviewer">Reviewer: </label>
         <select class="form-select" name="reviewer" id="recipient" aria-label="Default select example">
-            <% for (let emp of user) {%>
+            <% for (let emp of users) {%>
             <option value="<%=emp.id%>"><%=emp.name%></option>
             <%}%>
           </select>

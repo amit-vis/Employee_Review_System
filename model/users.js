@@ -21,18 +21,20 @@ const userSchema = new mongoose.Schema({
     assignReview:[
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'AssignReview'
-        }
+            ref: 'AssignReview',
+            required: true
+        },
     ],
     myReview:[
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'MyReview'
+            ref: 'MyReview',
+            required: true
         }
     ]
 },{
     timestamps: true
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

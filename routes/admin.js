@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controller/admin_controller');
+const passport = require('passport');
 
 router.get('/page', adminController.adminPage);
 router.get('/makeadmin/:id', adminController.makeAdmin);

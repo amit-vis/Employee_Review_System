@@ -1,4 +1,5 @@
 const User = require("../model/users");
+const passport = require('passport');
 
 module.exports.signIn = async function(req, res){
     try {
@@ -80,15 +81,6 @@ module.exports.createEmployee = async function(req, res){
     }
 }
 
-module.exports.createSession = async function(req, res){
-    try {
-        return res.redirect('/')
-    } catch (error) {
-        console.log("Error", error);
-        return;
-    }
-};
-
 module.exports.addEmployee = async function(req, res){
     try {
         let user = await User.findById(req.params.id);
@@ -101,3 +93,33 @@ module.exports.addEmployee = async function(req, res){
         return;
     }
 }
+
+module.exports.createSession = function (req, res, next) {
+    passport.authenticate('local', function (err, user) {
+      if (err) {
+        console.log("Error in passport authentication", err);
+        return res.redirect('/user/sign-in');
+      }
+  
+      if (!user) {
+        return res.redirect('/user/sign-in');
+      }
+  
+      // Redirect based on isAdmin status
+      if (user.isAdmin) {
+        return res.redirect('/admin/page'); // Redirect to admin page
+      } else {
+        return res.redirect('/'); // Redirect to home page (or any other desired route)
+      }
+    })(req, res, next);
+  };
+
+  module.exports.destroySession = function(req, res){
+    req.logout(function (error){
+        if(error){
+            console.log("Error while signing out")
+            return res.redirect('back')
+        }
+        return res.redirect('/user/sign-in')
+    })
+  }

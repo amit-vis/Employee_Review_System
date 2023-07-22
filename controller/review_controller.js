@@ -1,36 +1,46 @@
+
 const AssignReview = require('../model/assignReview');
 const User = require('../model/users');
 
-module.exports.home = async function(req, res){
-    try {
-        let user = await User.find({});
-        return res.render('review', {
-            title: 'ESR | Employee Page',
-            user
-        })
-    } catch (error) {
-        console.log("Error", error);
-    }
+module.exports.home = async function(req, res) {
+  try {
+    const users = await User.find({});
+    return res.render('review', {
+      title: 'ESR | Employee Page',
+      users
+    });
+  } catch (error) {
+    console.log('Error:', error);
+    return res.status(500).send('Internal Server Error');
+  }
 };
 
-module.exports.createReview = async function(req, res){
-    try {
-        let review = await AssignReview.findOne({fromUser: req.body.reviewer, toUser: req.body.recipient});
-        if(review){
-            return res.redirect('back');
-        }
+module.exports.createReview = async function(req, res) {
+  try {
+    const reviewerId = req.body.reviewer;
+    const recipientId = req.body.recipient;
 
-        review = await AssignReview.create({
-            fromUser: req.body.reviewer,
-            toUser: req.body.recipient
-        })
+    const existingReview = await AssignReview.findOne({
+      fromUser: reviewerId,
+      toUser: recipientId
+    });
 
-        let user = await User.findById(req.params.reviewer);
-
-        user.assignReview.push(review);
-        user.save();
-
-    } catch (error) {
-        console.log("Error", error)
+    if (existingReview) {
+      return res.redirect('back');
     }
-}
+
+    const newReview = await AssignReview.create({
+      fromUser: reviewerId,
+      toUser: recipientId
+    });
+
+    const reviewer = await User.findById(reviewerId);
+    reviewer.assignReview.push(newReview);
+    await reviewer.save();
+
+    return res.redirect('back');
+  } catch (error) {
+    console.log('Error:', error);
+    return res.status(500).send('Internal Server Error');
+  }
+};
