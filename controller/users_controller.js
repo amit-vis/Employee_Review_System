@@ -49,11 +49,14 @@ module.exports.create = async function(req, res){
                 isAdmin: true
             })
         }else{
+            req.flash('success', "User already exists")
             return res.redirect('back')
         }
+        req.flash('success', "Admin created successfully")
         return res.redirect('/user/sign-in')
     } catch (error) {
         console.log("Error", error);
+        req.flash('error', 'Something Error to create the Admin')
         return;
     }
 }
@@ -72,11 +75,14 @@ module.exports.createEmployee = async function(req, res){
                 isAdmin: false
             })
         }else{
+            req.flash('success', 'Employee Already Exist Successfully')
             return res.redirect('back')
         }
-        return res.redirect('/user/sign-in')
+        req.flash('success', 'Employee Created Successfully')
+        return res.redirect('back')
     } catch (error) {
         console.log("Error", error);
+        req.flash('error', 'Something Error to create the Employee')
         return;
     }
 }
@@ -87,9 +93,11 @@ module.exports.addEmployee = async function(req, res){
 
         user.isAdmin = false;
         user.save();
+        req.flash('success', 'Employee Adedd Successfully')
         return res.redirect('back');
     } catch (error) {
         console.log('Error', error);
+        req.flash('error', 'Somethin Error to add Employee')
         return;
     }
 }
@@ -98,17 +106,21 @@ module.exports.createSession = function (req, res, next) {
     passport.authenticate('local', function (err, user) {
       if (err) {
         console.log("Error in passport authentication", err);
+        req.flash('error', 'Something Error')
         return res.redirect('/user/sign-in');
       }
   
       if (!user) {
+        req.flash('error', 'user not found')
         return res.redirect('/user/sign-in');
       }
   
       // Redirect based on isAdmin status
       if (user.isAdmin) {
+        req.flash('success', "Admin Page")
         return res.redirect('/admin/page'); // Redirect to admin page
       } else {
+        req.flash('success', "Employee Page")
         return res.redirect('/'); // Redirect to home page (or any other desired route)
       }
     })(req, res, next);
@@ -120,6 +132,7 @@ module.exports.createSession = function (req, res, next) {
             console.log("Error while signing out")
             return res.redirect('back')
         }
+        req.flash('success', 'Signing out Successfully')
         return res.redirect('/user/sign-in')
     })
   }

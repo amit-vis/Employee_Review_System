@@ -6,6 +6,8 @@ const session = require('express-session');
 const db = require('./config/mongoose');
 const passport = require('passport');
 const passportLocal = require('./config/passport_local_stratergy');
+const Flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 
 app.use(express.urlencoded({extended: true}));
@@ -36,6 +38,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+app.use(Flash());
+app.use(customMware.setFlash);
 
 // use the express router
 app.use('/', require('./routes'));

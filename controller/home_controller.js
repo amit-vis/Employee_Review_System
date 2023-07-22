@@ -42,8 +42,11 @@ module.exports.completeReview = async function(req, res){
 
         user.myReview.push(review);
         user.save();
+        req.flash('success', 'review Submitted')
         return res.redirect('back')
     } catch (error) {
         console.log("Error", error)
+        req.flash('error', 'Error in submitting the review');
+        return;
     }
 }

@@ -37,10 +37,11 @@ module.exports.createReview = async function(req, res) {
     const reviewer = await User.findById(reviewerId);
     reviewer.assignReview.push(newReview);
     await reviewer.save();
-
+    req.flash('success', 'Task Assigned Successfully')
     return res.redirect('back');
   } catch (error) {
     console.log('Error:', error);
-    return res.status(500).send('Internal Server Error');
+    req.flash('error', 'Error In Assigning The Task')
+    return;
   }
 };

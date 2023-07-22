@@ -2,18 +2,24 @@
     <h1>Assisgn Review to Employee</h1>
     <hr/>
     <form action="/review/createReview" method="post">
+      <div class="mb-3">
         <label for="recipient">Recipient: </label>
         <select class="form-select" name="recipient" id="recipient" aria-label="Default select example">
             <% for (let emp of users) {%>
             <option value="<%=emp.id%>"><%=emp.name%></option>
             <%}%>
           </select>
+        </div>
+        <div class="mb-3">
           <label for="reviewer">Reviewer: </label>
         <select class="form-select" name="reviewer" id="recipient" aria-label="Default select example">
             <% for (let emp of users) {%>
             <option value="<%=emp.id%>"><%=emp.name%></option>
             <%}%>
           </select>
+        </div>
+        <div>
           <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 </div>
