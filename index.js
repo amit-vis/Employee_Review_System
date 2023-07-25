@@ -8,6 +8,7 @@ const passport = require('passport');
 const passportLocal = require('./config/passport_local_stratergy');
 const Flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const MongoStore = require('connect-mongo');
 
 
 app.use(express.urlencoded({extended: true}));
@@ -32,7 +33,14 @@ app.use(session({
     resave: false,
     cookie:{
         maxAge: (1000* 60* 100)
-    }
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb+srv://amit917480:hOtHsQP7mQfpralq@cluster0.rymrybp.mongodb.net/',
+        autoRemove: 'disabled'
+    },
+    function(err){
+        console.log(err || 'connect mongodb_setup ok')
+    }),
 }))
 
 app.use(passport.initialize());
