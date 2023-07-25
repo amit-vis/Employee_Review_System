@@ -1,7 +1,7 @@
-<div class="container">
-    <h1>Sign UP</h1>
+<div class="container card mt-2 w-50 bg-info">
+    <h1 class="text-center mt-2">Sign UP</h1>
 
-    <form action="/user/create" method="post">
+    <form action="/user/create" method="post" class="mt-2">
         <div class="mb-3">
             <label for="exampleInputName1" class="form-label">Full Name</label>
             <input type="text" class="form-control" name="name" id="exampleInputName1" aria-describedby="nameHelp">
@@ -23,12 +23,14 @@
         <div class="d-flex justify-content-between">
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <label class="form-check-label text-light" for="exampleCheck1">Check me out</label>
         </div>
-        <div>
-            <a href="/user/sign-in">Already Sign In?</a>
+        <div class="nav-item">
+            <a class="nav-link text-light" href="/user/sign-in">Already Sign In?</a>
         </div>
     </div>
+    <div class="text-center mb-2">
         <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
     </form>
 </div>

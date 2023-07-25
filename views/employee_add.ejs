@@ -1,5 +1,5 @@
-<div class="container">
-    <h1>Add Employee</h1>
+<div class="container card w-50 mt-2 bg-info">
+    <h1 class="text-center mt-2">Add Employee</h1>
 
     <form action="/user/createemp" method="post">
         <div class="mb-3">
@@ -20,6 +20,8 @@
             <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
             <input type="password" name="c_password" class="form-control" id="exampleInputPassword2">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-2 text-center">
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
     </form>
 </div>

@@ -11,5 +11,6 @@ router.use('/user', require('./user'));
 router.use('/review', require('./review'));
 router.get('/', passport.checkAuthentication, homeController.home);
 router.post('/completeReview',passport.checkAuthentication, homeController.completeReview);
+router.get('*', homeController.errorPage);
 
 module.exports = router;

@@ -1,7 +1,7 @@
-<div class="container">
-    <h1>Assisgn Review to Employee</h1>
+<div class="container card mt-2 w-50 bg-warning text-light">
+    <h1 class="text-center mt-2">Assisgn Review to Employee</h1>
     <hr/>
-    <form action="/review/createReview" method="post">
+    <form action="/review/createReview" method="post" class="mt-2">
       <div class="mb-3">
         <label for="recipient">Recipient: </label>
         <select class="form-select" name="recipient" id="recipient" aria-label="Default select example">
@@ -18,7 +18,7 @@
             <%}%>
           </select>
         </div>
-        <div>
+        <div class="text-center mb-2">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>

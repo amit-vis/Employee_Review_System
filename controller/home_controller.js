@@ -50,3 +50,9 @@ module.exports.completeReview = async function(req, res){
         return;
     }
 }
+
+module.exports.errorPage = function(req,res){
+    return res.render('Error', {
+        title: "ESR | Error Page"
+    })
+}
