@@ -56,3 +56,17 @@ module.exports.errorPage = function(req,res){
         title: "ESR | Error Page"
     })
 }
+
+module.exports.deleteReview = async function(req, res){
+    try {
+        let review = await MyReview.findByIdAndDelete(req.params.id);
+        if (review){
+            req.flash("success", "review deleted successfully")
+            return res.redirect('back')
+        }
+    } catch (error) {
+        req.flash("Error", "Error in review")
+        console.log("Error", error)
+        
+    }
+}

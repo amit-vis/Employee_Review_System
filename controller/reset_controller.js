@@ -67,6 +67,7 @@ module.exports.updatePassword = async function(req, res){
         let user = await User.findOne({email: token.email});
         user.password = req.body.password;
         user.save();
+        req.flash("success", "password has been updated successfully");
         res.redirect('/user/sign-in')
         
     } catch (error) {

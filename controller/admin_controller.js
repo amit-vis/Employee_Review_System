@@ -53,7 +53,7 @@ module.exports.deleteEmployee = async function (req, res) {
         }
     } catch (error) {
         console.log("Error", error);
-        req.flash('success', 'Something wrong in removing the employee.')
+        req.flash('error', 'Something wrong in removing the employee.')
         return;
     }
 }
