@@ -1,6 +1,7 @@
-<div class="container card w-50 mt-2 bg-info">
-    <h1 class="text-center mt-2">Add Employee</h1>
-
+<div class="container d-flex justify-content-center align-items-center vh-100">
+<div class="card w-50 bg-info">
+    <h1 class="card-header text-center">Add Employee</h1>
+    <div class="card-body">
     <form action="/user/createemp" method="post">
         <div class="mb-3">
             <label for="exampleInputName1" class="form-label">Full Name</label>
@@ -20,8 +21,10 @@
             <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
             <input type="password" name="c_password" class="form-control" id="exampleInputPassword2">
         </div>
-        <div class="mb-2 text-center">
+        <div class="text-center">
             <button type="submit" class="btn btn-danger">Submit</button>
         </div>
     </form>
+</div>
+</div>
 </div>

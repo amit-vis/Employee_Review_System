@@ -1,13 +1,15 @@
-<div class="container card mt-4 w-50 bg-info">
-    <h1 class="text-center mt-2">Sign In</h1>
-
-    <form action="/user/create-session" method="post" class="mt-2">
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card w-50 bg-info">
+        <h1 class="card-header text-center">Sign In</h1>
+        <div class="card-body">
+        <form action="/user/create-session" method="post" class="mt-2">
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword" name="password"
+                    placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
             <div class="d-flex justify-content-between">
@@ -18,10 +20,12 @@
                     <a class="nav-link text-light" href="/reset/forgot">Forgot Password</a>
                 </div>
             </div>
-            <br/>
-            <div class="text-center mb-2">
+            <br />
+            <div class="text-center">
                 <button type="submit" class="btn btn-warning">Sign In</button>
             </div>
-            
-    </form>
+
+        </form>
+    </div>
+    </div>
 </div>
