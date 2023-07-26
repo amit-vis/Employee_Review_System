@@ -37,3 +37,39 @@ module.exports.passwordReset = async function(req, res){
         
     }
 }
+
+module.exports.resetPassPage = async function(req, res){
+    try {
+        let confirm = await Reset.findOne({acessToken: req.query.acessToken})
+        console.log('confirm', confirm)
+        if(confirm.isValid == false){
+            return res.redirect('*');
+        }
+        return res.render('recover', {
+            title: 'ESR | Reset Password',
+            token: req.query.acessToken,
+            isValid:true
+
+        })
+    } catch (error) {
+        console.log("Error", error);
+    }
+}
+
+module.exports.updatePassword = async function(req, res){
+    try {
+        if(req.body.password !== req.body.c_password){
+            return res.redirect('back')
+        }
+        let token = await Reset.findOne({acessToken: req.body.token})
+        token.isValid = false;
+        token.save();
+        let user = await User.findOne({email: token.email});
+        user.password = req.body.password;
+        user.save();
+        res.redirect('/user/sign-in')
+        
+    } catch (error) {
+        console.log('Error', error);
+    }
+}

@@ -33,7 +33,7 @@ module.exports.removeAdmin = async function (req, res) {
     try {
         const user = await User.findOneAndUpdate({ _id: req.params.id }, { $set: { isAdmin: false } });
         if (user) {
-            req.flash('success', 'Switched to Admin successfully');
+            req.flash('success', 'Switched to Employee successfully');
             return res.redirect('back')
 
         }
