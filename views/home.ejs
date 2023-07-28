@@ -20,8 +20,8 @@
             <div id="myReview">
                 <h2 class="text-center mt-2">My Reviews</h2>
                 <% for (let MyReview of user.myReview) { %>
-                <div id="myReviews-div" class="position-relative">
-                    <a href="/delete/<%=MyReview.id%>" class="position-absolute top-0 end-0 nav-link">X</a>
+                <div id="myReviews-div" class="position-relative review">
+                    <a href="/delete/<%=MyReview.id%>" class="position-absolute top-0 end-0 nav-link delete-review">X</a>
                     <p>From : <%= MyReview.fromUser.name %></p>
                     <p>Review : <span><%= MyReview.message %></span></p>
                     <hr>
@@ -31,3 +31,5 @@
         </div>
     </div>
 </div>
+
+<script src="/js/delete_emp_review.js"></script>

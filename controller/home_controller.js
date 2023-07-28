@@ -61,6 +61,11 @@ module.exports.deleteReview = async function(req, res){
     try {
         let review = await MyReview.findByIdAndDelete(req.params.id);
         if (review){
+            if(req.xhr){
+                return res.status(200).json({
+                    message: "Review Deleted"
+                });
+            }
             req.flash("success", "review deleted successfully")
             return res.redirect('back')
         }

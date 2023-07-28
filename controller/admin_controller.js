@@ -17,6 +17,7 @@ module.exports.makeAdmin = async function (req, res) {
     try {
         const user = await User.findOneAndUpdate({ _id: req.params.id }, { $set: { isAdmin: true } });
         if (user) {
+            
             req.flash('success', 'Switched to Admin successfully');
             return res.redirect('back')
         }
@@ -33,6 +34,7 @@ module.exports.removeAdmin = async function (req, res) {
     try {
         const user = await User.findOneAndUpdate({ _id: req.params.id }, { $set: { isAdmin: false } });
         if (user) {
+            
             req.flash('success', 'Switched to Employee successfully');
             return res.redirect('back')
 
@@ -48,6 +50,11 @@ module.exports.deleteEmployee = async function (req, res) {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
         if (user) {
+            if(req.xhr){
+                return res.status(200).json({
+                    message: "Employee Deleted"
+                })
+            }
             req.flash('success', 'Employee Removed successfully')
             return res.redirect('back');
         }

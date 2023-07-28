@@ -12,21 +12,21 @@
         </thead>
         <tbody>
             <%for(emp of employee){%>
-            <tr id="emp-view-<%=emp.id%>">
+            <tr id="emp-view-<%=emp.id%>" class="emp-view">
                 <td><%=emp.name%></td>
                 <td><%=emp.email%></td>
                 <td>
                     <%if (emp.isAdmin==true){%>
-                        <a type="submit" href="/admin/removeadmin/<%=emp.id%>" class="btn btn-danger">Admin</a>
+                        <a type="submit" href="/admin/removeadmin/<%=emp.id%>" class="btn btn-danger update-emp">Admin</a>
                     <%}else{%>
-                        <a type="submit" href="/admin/makeadmin/<%=emp.id%>" class="btn btn-danger">Employee</a>
+                        <a type="submit" href="/admin/makeadmin/<%=emp.id%>" class="btn btn-danger update-admin">Employee</a>
                     <%}%>
                 </td>
                 <td>
                     <%-include('update')%>
                 </td>
                 <td>
-                    <a type="submit" href="/admin/delete/<%=emp.id%>" class="btn btn-danger">Remove</a>
+                    <a type="submit" href="/admin/delete/<%=emp.id%>" class="btn btn-danger delete-employee">Remove</a>
                 </td>
             </tr>
             <%}%>
@@ -35,3 +35,5 @@
     </table>
 
 </div>
+
+<script src="/js/delete_Employee.js"></script>
