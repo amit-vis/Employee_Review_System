@@ -1,3 +1,4 @@
+// code for myreview schema
 const mongoose = require('mongoose');
 
 const myReviewSchema = new mongoose.Schema({

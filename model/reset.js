@@ -1,3 +1,4 @@
+// code for reset schema
 const mongoose = require('mongoose');
 
 const resetSchema = new mongoose.Schema({

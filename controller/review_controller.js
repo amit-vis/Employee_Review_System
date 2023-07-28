@@ -2,6 +2,7 @@
 const AssignReview = require('../model/assignReview');
 const User = require('../model/users');
 
+// code for show the review page
 module.exports.home = async function(req, res) {
   try {
     const users = await User.find({});
@@ -15,6 +16,7 @@ module.exports.home = async function(req, res) {
   }
 };
 
+// code for create the review page
 module.exports.createReview = async function(req, res) {
   try {
     const reviewerId = req.body.reviewer;

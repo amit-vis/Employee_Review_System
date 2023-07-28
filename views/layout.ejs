@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <!-- import all the required file -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@
 
     <%- script %>
     <script>
+            // function for success flash method
         <%if (flash.success && flash.success.length > 0){%>
             new Noty({
                 theme: 'relax',
@@ -36,6 +38,7 @@
             }).show()
             <%}%>
 
+                    // function for error flash method
             <%if (flash.error && flash.error.length>0){%>
                 new Noty({
                     theme: 'relax',

@@ -1,3 +1,5 @@
+// code for control the page of the while deleting the review
+
 let deleteEmployee = function(deleteLink){
     $.ajax({
         type: "get",
@@ -16,6 +18,8 @@ let deleteEmployee = function(deleteLink){
         }
     })
 }
+
+// call the deleteReview function
 
 $(document).ready(function(){
     $('.delete-employee').click(function(e){

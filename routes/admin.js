@@ -1,3 +1,4 @@
+// code for admin route
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controller/admin_controller');

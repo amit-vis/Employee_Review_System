@@ -1,3 +1,4 @@
+// connect to databash
 const mongoose = require('mongoose');
 
 mongoose.connect(`mongodb+srv://amit917480:hOtHsQP7mQfpralq@cluster0.rymrybp.mongodb.net/Employee_Review_system`);

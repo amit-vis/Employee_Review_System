@@ -1,8 +1,11 @@
+// code for paasport local stratergy
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../model/users');
 
+// use the localstratergy
 passport.use(new LocalStrategy(
     {
         usernameField: 'email',
@@ -23,9 +26,12 @@ passport.use(new LocalStrategy(
     }
 ));
 
+// seriallize the passport localauthentication
 passport.serializeUser(function(user, done){
     done(null, user.id)
 })
+
+// deseriallize the passport localauthentication
 
 passport.deserializeUser(async function(id, done){
     try {
@@ -39,6 +45,7 @@ passport.deserializeUser(async function(id, done){
     }
 })
 
+// code for check the authentication
 passport.checkAuthentication = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
@@ -46,6 +53,7 @@ passport.checkAuthentication = function(req, res, next){
     return res.redirect('/user/sign-in')
 }
 
+// code for set the authentication
 passport.setAuthenticatedUser = function(req, res, next){
     if(req.isAuthenticated()){
         res.locals.user = req.user

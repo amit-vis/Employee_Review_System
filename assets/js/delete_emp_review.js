@@ -1,3 +1,4 @@
+// code for control the page of the while deleting the review
 
 let deleteReview = function (deleteLink) {
     $.ajax({
@@ -18,6 +19,7 @@ let deleteReview = function (deleteLink) {
     })
 }
 
+// call the deleteReview function
 $(document).ready(function(){
     $('.delete-review').click(function(e){
         e.preventDefault();

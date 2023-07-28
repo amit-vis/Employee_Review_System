@@ -1,3 +1,4 @@
+// reset route
 const express = require('express');
 const router = express.Router();
 const resetController = require('../controller/reset_controller');

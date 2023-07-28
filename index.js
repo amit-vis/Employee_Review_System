@@ -1,3 +1,5 @@
+// require all required module and variable
+
 const express = require('express');
 const app = express();
 const port = 5000;
@@ -26,6 +28,7 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
+// use the session
 app.use(session({
     name: 'Employee Review System',
     secret: 'test',
@@ -43,9 +46,12 @@ app.use(session({
     }),
 }))
 
+// use the passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+// use the falsh function and custom mware
 
 app.use(Flash());
 app.use(customMware.setFlash);

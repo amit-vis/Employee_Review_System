@@ -1,6 +1,7 @@
 const User = require("../model/users");
 const passport = require('passport');
 
+// code for show the sign in page
 module.exports.signIn = async function(req, res){
     try {
         return res.render('user_sign_in', {
@@ -14,6 +15,7 @@ module.exports.signIn = async function(req, res){
     }
 }
 
+// code for show the employee sign up page
 module.exports.employeeSignIn = async function(req, res){
     try {
         return res.render('employee_add', {
@@ -24,6 +26,7 @@ module.exports.employeeSignIn = async function(req, res){
     }
 }
 
+// code for show the admin sign up page
 module.exports.signUp = async function(req, res){
     try {
         return res.render('user_sign_up', {
@@ -35,6 +38,7 @@ module.exports.signUp = async function(req, res){
     }
 }
 
+// code for create the admin
 module.exports.create = async function(req, res){
     try {
         if(req.body.password != req.body.c_password){
@@ -61,6 +65,7 @@ module.exports.create = async function(req, res){
     }
 }
 
+// code for create the Employee
 module.exports.createEmployee = async function(req, res){
     try {
         if(req.body.password != req.body.c_password){
@@ -87,6 +92,7 @@ module.exports.createEmployee = async function(req, res){
     }
 }
 
+// code for check the user type
 module.exports.addEmployee = async function(req, res){
     try {
         let user = await User.findById(req.params.id);

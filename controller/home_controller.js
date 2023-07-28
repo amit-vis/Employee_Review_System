@@ -2,7 +2,7 @@ const User = require('../model/users');
 const MyReview = require('../model/myReview');
 const AssignReview = require('../model/assignReview');
 
-
+// show the Employee the page
 module.exports.home = async function (req, res) {
     try {
         let user = await User.findById(req.user.id).populate({
@@ -26,6 +26,7 @@ module.exports.home = async function (req, res) {
     }
 }
 
+// code for share the review and get the review from the employee
 module.exports.completeReview = async function(req, res){
     try {
         let review = await AssignReview.findOne({fromUser: req.user, toUser: req.body.toUser});
@@ -51,12 +52,14 @@ module.exports.completeReview = async function(req, res){
     }
 }
 
+// handle the error when user acess incorrect page
 module.exports.errorPage = function(req,res){
     return res.render('Error', {
         title: "ESR | Error Page"
     })
 }
 
+// code for delete the review
 module.exports.deleteReview = async function(req, res){
     try {
         let review = await MyReview.findByIdAndDelete(req.params.id);

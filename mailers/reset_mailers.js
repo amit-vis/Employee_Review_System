@@ -1,6 +1,7 @@
 const nodemailer = require('../config/nodeMailers');
 const secure = require('../config/secure');
 
+// render the mail template
 exports.newMail = (link)=>{
     const htmlString = nodemailer.renderTemplate({link: link}, 'reset/reset.ejs');
 

@@ -6,13 +6,14 @@ const resetWorkers = require('../workers/reset_mail_workers');
 const Reset = require('../model/reset');
 
 
-
+// show the page of forgot
 module.exports.forgotGet = function(req, res){
     return res.render('forgot', {
         title: 'ESR | Forgot Password'
     })
 }
 
+// code for reset the password
 module.exports.passwordReset = async function(req, res){
     try {
         const user = await User.findOne({email: req.body.email});
@@ -38,6 +39,7 @@ module.exports.passwordReset = async function(req, res){
     }
 }
 
+// code for show the reset page
 module.exports.resetPassPage = async function(req, res){
     try {
         let confirm = await Reset.findOne({acessToken: req.query.acessToken})
@@ -56,6 +58,7 @@ module.exports.resetPassPage = async function(req, res){
     }
 }
 
+// code for update the new password
 module.exports.updatePassword = async function(req, res){
     try {
         if(req.body.password !== req.body.c_password){
