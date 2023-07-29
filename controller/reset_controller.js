@@ -27,7 +27,6 @@ module.exports.passwordReset = async function(req, res){
                 if(err){
                     console.log("Error", err)
                 }
-                console.log('job enqued', job.id)
                 return res.redirect('back')
             })
         }else{
