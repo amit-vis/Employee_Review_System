@@ -4,7 +4,8 @@
   "description": "building a project for Employee Review system",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Amit_vishwakarma",
