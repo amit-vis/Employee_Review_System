@@ -21,9 +21,13 @@
             <div id="myReview">
                 <h2 class="text-center mt-2">My Reviews</h2>
                 <% for (let MyReview of user.myReview) { %>
-                <div id="myReviews-div" class="position-relative review">
+                <div id="myReviews-div" class="position-relative review" value="<%=MyReview.id%>">
                     <a href="/delete/<%=MyReview.id%>" class="position-absolute top-0 end-0 nav-link delete-review">X</a>
-                    <p>From : <%= MyReview.fromUser.name %></p>
+                    <% if (MyReview.fromUser && MyReview.fromUser.name) { %>
+                        <p>From: <%= MyReview.fromUser.name %></p>
+                      <% } else { %>
+                        <p>From: User information not available</p>
+                      <% } %>
                     <p>Review : <span><%= MyReview.message %></span></p>
                     <hr>
                 <% } %>
