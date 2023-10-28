@@ -1,7 +1,6 @@
 const User = require('../model/users');
 const queue = require('../config/kue');
 const crypto = require('crypto');
-const create = require('connect-mongo');
 const resetWorkers = require('../workers/reset_mail_workers');
 const Reset = require('../model/reset');
 
